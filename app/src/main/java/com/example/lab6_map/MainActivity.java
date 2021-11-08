@@ -66,7 +66,7 @@ public class MainActivity extends FragmentActivity {
                         if (task.isSuccessful() && mLastKnownLocation != null) {
                             mMap.addPolyline(new PolylineOptions()
                                     .add(new LatLng(mLastKnownLocation.getLatitude(),
-                                            mLastKnownLocation.getLongitude()), mDestinationLatLng));
+                                            mLastKnownLocation.getLongitude()), bascomLatLng));
                         }
                     });
         }
@@ -75,9 +75,10 @@ public class MainActivity extends FragmentActivity {
     /**
      * Handles the result of the request for location permissions
      */
-    /**@Override
+    @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
             // If request is canceled, the result arrays are empty
             if (grantResults.length > 0
@@ -85,5 +86,5 @@ public class MainActivity extends FragmentActivity {
                 displayMyLocation();
             }
         }
-    }*/
+    }
 }
